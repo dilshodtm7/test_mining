@@ -21,6 +21,7 @@ export default function Home() {
       setUserData(WebApp.initDataUnsafe.user as UserData)
     }
   }, [])
+  console.log(userData)
 
   return (
     <main className="p-4">
