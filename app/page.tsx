@@ -21,7 +21,6 @@ export default function Home() {
       setUserData(WebApp.initDataUnsafe.user as UserData)
     }
   }, [])
-  console.log(userData)
 
   return (
     <main className="p-4">
@@ -29,12 +28,11 @@ export default function Home() {
         <>
           <h1 className="text-2xl font-bold mb-4">User Data</h1>
           <ul>
-            <li>ID: {userData}</li>
-            <li>First Name: {userData.first_name}</li>
-            <li>Last Name: {userData.last_name || 'N/A'}</li>
-            <li>Username: {userData.username || 'N/A'}</li>
-            <li>Language Code: {userData.language_code}</li>
-            <li>Is Premium: {userData.is_premium ? 'Yes' : 'No'}</li>
+           {
+              userData.map((item) => (
+                <li>{item}</li>
+              ))
+            }
           </ul>
         </>
       ) : (
