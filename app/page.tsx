@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import WebApp from '@twa-dev/sdk'
-import { useEffect, useState } from 'react'
+import WebApp from '@twa-dev/sdk';
+import { useEffect, useState } from 'react';
 
 // Define the interface for user data
 interface UserData {
@@ -14,13 +14,13 @@ interface UserData {
 }
 
 export default function Home() {
-  const [userData, setUserData] = useState<UserData | null>(null)
+  const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
     if (WebApp.initDataUnsafe.user) {
-      setUserData(WebApp.initDataUnsafe.user as UserData)
+      setUserData(WebApp.initDataUnsafe.user as UserData);
     }
-  }, [])
+  }, []);
 
   return (
     <main className="p-4">
@@ -28,16 +28,16 @@ export default function Home() {
         <>
           <h1 className="text-2xl font-bold mb-4">User Data</h1>
           <ul>
-           {
-              userData.map((item) => (
-                <li>{item}</li>
-              ))
-            }
+            {Object.entries(userData).map(([key, value]) => (
+              <li key={key}>
+                <strong>{key}</strong>: {value?.toString()}
+              </li>
+            ))}
           </ul>
         </>
       ) : (
         <div>Loading...</div>
       )}
     </main>
-  )
+  );
 }
