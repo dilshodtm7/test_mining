@@ -30,7 +30,7 @@ export default function Home() {
           <ul>
             {Object.entries(userData).map(([key, value]) => (
               <li key={key}>
-                <strong>{key}</strong>: {value?.toString()}
+                <strong>{key}</strong>: {value}
               </li>
             ))}
           </ul>
